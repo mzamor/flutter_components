@@ -22,7 +22,8 @@ class AppRoutes{
     return appRoutes;
   }
 
-  static Route<dynamic>? onGenerateRoute(RouteSettings settings) { MaterialPageRoute(
+  static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
+    MaterialPageRoute(
     builder: (context) => const Listview1Screen()
     );
   }

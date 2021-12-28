@@ -14,7 +14,9 @@ class CardScreen extends StatelessWidget {
         body: ListView(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
               children: const [
-                CustomCardType1()
+                CustomCardType1(),
+                SizedBox(height: 10),
+                CustomCardType2()
               ],
         ),
     );
