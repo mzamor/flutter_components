@@ -10,6 +10,9 @@ class AppRoutes{
     MenuOption(route: 'listview2', name: 'Listview tipo 2', screen : const Listview2Screen(), icon: Icons.list_alt),
     MenuOption(route: 'alerts', name: 'Alertas - Alerts', screen : const AlertScreen(), icon: Icons.add_alert_rounded),
     MenuOption(route: 'cards', name: 'Tarjetas - Cards', screen : const CardScreen(), icon: Icons.card_membership),
+    MenuOption(route: 'inputs', name: 'Inputs - Form', screen : const InputsScreen(), icon: Icons.input_rounded),
+    MenuOption(route: 'listviewbuilder', name: 'InfiniteScroll and Pull to refresh', screen : const ListviewBuilderScreen(), icon: Icons.list_alt_sharp),
+
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes() {

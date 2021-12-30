@@ -25,7 +25,7 @@ class AppTheme{
         backgroundColor: primary,
       ),
 
-    // ElevetedButton
+    // ElevetedButton Theme
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           primary: Colors.indigo,
@@ -33,6 +33,23 @@ class AppTheme{
           elevation: 0,
         )
         ),
+
+    // InputDecoration Theme
+    inputDecorationTheme: const InputDecorationTheme(
+      floatingLabelStyle: TextStyle(color: primary),
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: primary),
+        borderRadius: BorderRadius.only(topRight: Radius.circular(10), bottomLeft: Radius.circular(10))
+      ),
+
+      focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: primary),
+          borderRadius: BorderRadius.only(topRight: Radius.circular(10), bottomLeft: Radius.circular(10))
+      ),
+
+      border: OutlineInputBorder(
+          borderRadius: BorderRadius.only(topRight: Radius.circular(10), bottomLeft: Radius.circular(10))
+    ),),
   );
 
 
