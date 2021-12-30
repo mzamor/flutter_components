@@ -35,11 +35,25 @@ class _ListviewBuilderScreenState extends State<ListviewBuilderScreen> {
     isLoading = false;
     setState(() {});
   }
+  
+  Future onRefresh() async{
+    await Future.delayed(Duration(seconds: 3));
+    final lastId = imagesIds.last;
+    imagesIds.clear();
+    imagesIds.add(lastId + 1);
+    add5();
+  }
 
   void add5(){
     final lastId = imagesIds.last;
     imagesIds.addAll([1,2,3,4,5].map((e) => lastId + e));
     setState(() {});
+    if((scrollController.position.pixels + 100) <= scrollController.position.maxScrollExtent) return;
+    scrollController.animateTo(
+        scrollController.position.pixels + 120,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.fastOutSlowIn
+    );
   }
 
   @override
@@ -54,18 +68,21 @@ class _ListviewBuilderScreenState extends State<ListviewBuilderScreen> {
           removeBottom: true,
           child: Stack(
             children: [
-              ListView.builder(
-                controller: scrollController,
-                itemCount: imagesIds.length,
-                itemBuilder: (context, index) {
-                  return FadeInImage(
-                      width: double.infinity,
-                      height: 300,
-                      fit: BoxFit.cover,
-                      placeholder: const AssetImage('assets/jar-loading.gif'),
-                      image: NetworkImage(
-                          'https://picsum.photos/500/300?image=${imagesIds[index]}'));
-                },
+              RefreshIndicator(
+                onRefresh: onRefresh,
+                child: ListView.builder(
+                  controller: scrollController,
+                  itemCount: imagesIds.length,
+                  itemBuilder: (context, index) {
+                    return FadeInImage(
+                        width: double.infinity,
+                        height: 300,
+                        fit: BoxFit.cover,
+                        placeholder: const AssetImage('assets/jar-loading.gif'),
+                        image: NetworkImage(
+                            'https://picsum.photos/500/300?image=${imagesIds[index]}'));
+                  },
+                ),
               ),
               if(isLoading)
                 Positioned(
